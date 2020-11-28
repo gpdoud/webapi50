@@ -1,25 +1,28 @@
-public class User {
+using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
-    public int Id { get; set; }
-    public string Username { get; set; }
-    public string Password { get; set; }
-    public string Firstname { get; set; }
-    public string Lastname { get; set; }
-    public string Phone { get; set; }
-    public string Email { get; set; }
-    public bool IsReviewer { get; set; }
-    public bool IsAdmin { get; set; }
+namespace webapi50.Models {
 
-    public User() {
-        Id = 0;
-        Username = string.Empty;
-        Password = "Train@MAX";
-        Firstname = string.Empty;
-        Lastname = string.Empty;
-        Phone = string.Empty;
-        Email = string.Empty;
-        IsReviewer = false;
-        IsAdmin = false;
+    [Index(nameof(Username), IsUnique = true)]
+    public class User {
+
+        public int Id { get; set; } = 0;
+        [StringLength(30)]
+        public string Username { get; set; } = string.Empty;
+        [StringLength(30)]
+        public string Password { get; set; } = "Train@MAX";
+        [StringLength(30)]
+        public string Firstname { get; set; } = string.Empty;
+        [StringLength(30)]
+        public string Lastname { get; set; } = string.Empty;
+        [StringLength(12)]
+        public string? Phone { get; set; } = null;
+        [StringLength(80)]
+        public string? Email { get; set; } = null;
+        public bool IsReviewer { get; set; } = false;
+        public bool IsAdmin { get; set; } = false;
+
+        public User() { }
+
     }
-    
 }

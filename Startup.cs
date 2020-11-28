@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using webapi50.Models;
 
 namespace webapi50
 {
@@ -28,7 +29,7 @@ namespace webapi50
         {
             services.AddDbContext<AppDbContext>(x => {
                 //var connStr = Configuration.GetConnectionString("AppDbContext");
-                x.UseSqlServer(Configuration.GetConnectionString("AppDbContext"));
+                x.UseSqlServer(Configuration.GetConnectionString("DbConnStr"));
             });
             services.AddControllers();
             services.AddSwaggerGen(c =>
